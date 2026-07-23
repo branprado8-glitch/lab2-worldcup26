@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pantalla 5 · Matriz de Enfrentamientos</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="worldcup26_styles.css">
+</head>
+<body>
+
+<header>
+  <div class="logo-mark" aria-hidden="true">
+    <svg viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="13" cy="13" r="11" stroke="#0A0A0A" stroke-width="2"/>
+      <path d="M7 13l4 4 8-8" stroke="#0A0A0A" stroke-width="2.2"
+            stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+  <div class="header-titles">
+    <h1>Matriz de Enfrentamientos</h1>
+    <p>Cruce de 3 recursos · 12 grupos · ISW-521 · Lab 2</p>
+  </div>
+  <span class="header-badge">API worldcup26.ir</span>
+</header>
+
+<nav class="nav-pantallas" aria-label="Pantallas del laboratorio">
+  <a href="index.html">Inicio</a>
+  <a href="worldcup26_tour_sedes.html">1 · Tour de Sedes</a>
+  <a href="worldcup26_agenda.html">2 · Agenda Simultánea</a>
+  <a href="worldcup26_timeline.html">3 · Timeline Infinito</a>
+  <a href="worldcup26_dashboard.html">4 · Dashboard</a>
+  <a href="worldcup26_matriz.html" class="activa">5 · Matriz</a>
+</nav>
+
+<main>
+
+  <div class="banner-backoff" id="bannerBackoff" role="status" aria-live="polite">
+    <span class="alert-icon">⏳</span>
+    <span id="bannerBackoffTexto"></span>
+    <span class="countdown-429" id="bannerBackoffCountdown"></span>
+  </div>
+
+  <div class="banner-cache" id="bannerCache" role="alert" aria-live="assertive">
+    <span class="alert-icon">📦</span>
+    <span id="bannerCacheTexto"></span>
+  </div>
+
+  <!-- Aviso local cuando /get/games falla: la matriz sigue visible -->
+  <div class="alert-banner" id="alertaPartidos" role="alert" aria-live="assertive">
+    <span class="alert-icon">⚡</span>
+    <div>
+      <strong>Resultados no disponibles</strong><br>
+      La petición a /get/games falló: las matrices se muestran completas
+      con todas las celdas en "Pendiente".
+      <br><br>
+      <button class="btn" id="btnReintentarPartidos" type="button">
+        Reintentar resultados
+      </button>
+    </div>
+  </div>
+
+  <div class="section-eyebrow visible">
+    <span class="eyebrow-label">Enfrentamientos por grupo (fila vs columna)</span>
+    <div class="eyebrow-line"></div>
+    <span class="eyebrow-count" id="contadorGrupos">0</span>
+  </div>
+
+  <!-- 12 matrices 4×4, una por grupo -->
+  <div class="grupos-matrices" id="gruposMatrices" aria-live="polite"></div>
+
+  <!-- Estado global -->
+  <div class="state-msg" id="estadoGlobal">
+    <span class="state-icon"><span class="spinner"></span></span>
+    <h2>Construyendo matrices…</h2>
+    <p>Cruzando /get/groups, /get/teams y /get/games.</p>
+  </div>
+
+</main>
+
+<footer>
+  <span>
+    Datos: <code>worldcup26.ir</code> ·
+    Endpoints: <code>/get/groups</code> <code>/get/teams</code> <code>/get/games</code>
+  </span>
+  <span>ISW-521 · Laboratorio 2 · Brandon Prado</span>
+</footer>
+
+<script src="worldcup26_api.js" defer></script>
+<script src="worldcup26_matriz.js" defer></script>
+
+</body>
+</html>

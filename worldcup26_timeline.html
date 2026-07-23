@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pantalla 3 · Timeline Infinito</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="worldcup26_styles.css">
+</head>
+<body>
+
+<header>
+  <div class="logo-mark" aria-hidden="true">
+    <svg viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="13" cy="13" r="11" stroke="#0A0A0A" stroke-width="2"/>
+      <path d="M7 13l4 4 8-8" stroke="#0A0A0A" stroke-width="2.2"
+            stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+  <div class="header-titles">
+    <h1>Timeline Infinito</h1>
+    <p>IntersectionObserver · carga progresiva · ISW-521 · Lab 2</p>
+  </div>
+  <span class="header-badge">API worldcup26.ir</span>
+</header>
+
+<nav class="nav-pantallas" aria-label="Pantallas del laboratorio">
+  <a href="index.html">Inicio</a>
+  <a href="worldcup26_tour_sedes.html">1 · Tour de Sedes</a>
+  <a href="worldcup26_agenda.html">2 · Agenda Simultánea</a>
+  <a href="worldcup26_timeline.html" class="activa">3 · Timeline Infinito</a>
+  <a href="worldcup26_dashboard.html">4 · Dashboard</a>
+  <a href="worldcup26_matriz.html">5 · Matriz</a>
+</nav>
+
+<main>
+
+  <div class="banner-backoff" id="bannerBackoff" role="status" aria-live="polite">
+    <span class="alert-icon">⏳</span>
+    <span id="bannerBackoffTexto"></span>
+    <span class="countdown-429" id="bannerBackoffCountdown"></span>
+  </div>
+
+  <div class="banner-cache" id="bannerCache" role="alert" aria-live="assertive">
+    <span class="alert-icon">📦</span>
+    <span id="bannerCacheTexto"></span>
+  </div>
+
+  <div class="section-eyebrow visible">
+    <span class="eyebrow-label">104 partidos en orden cronológico</span>
+    <div class="eyebrow-line"></div>
+    <span class="eyebrow-count" id="contadorInsertados">0 / 0</span>
+  </div>
+
+  <!-- Lista del timeline: los bloques de 10 se insertan aquí -->
+  <div class="timeline-lista" id="timelineLista" aria-live="polite"></div>
+
+  <!-- Elemento centinela observado por IntersectionObserver -->
+  <div id="centinela" aria-hidden="true"></div>
+
+  <!-- Indicador de progreso / fin de lista -->
+  <p class="timeline-progreso" id="timelineProgreso"></p>
+
+  <!-- Estado de error con reintento manual (reto de resiliencia) -->
+  <div class="state-msg" id="estadoError" style="display:none">
+    <span class="state-icon">📡</span>
+    <h2>No se pudieron cargar los partidos</h2>
+    <p>/get/games agotó los reintentos y no hay copia en caché.</p>
+    <br>
+    <button class="btn btn-oro" id="btnReintentar" type="button">
+      Reintentar carga
+    </button>
+  </div>
+
+  <!-- Estado de carga inicial -->
+  <div class="state-msg" id="estadoCarga">
+    <span class="state-icon"><span class="spinner"></span></span>
+    <h2>Cargando los 104 partidos…</h2>
+    <p>Una sola petición a /get/games; la paginación es solo visual.</p>
+  </div>
+
+</main>
+
+<footer>
+  <span>
+    Datos: <code>worldcup26.ir</code> ·
+    Endpoint: <code>/get/games</code>
+  </span>
+  <span>ISW-521 · Laboratorio 2 · Brandon Prado</span>
+</footer>
+
+<script src="worldcup26_api.js" defer></script>
+<script src="worldcup26_timeline.js" defer></script>
+
+</body>
+</html>

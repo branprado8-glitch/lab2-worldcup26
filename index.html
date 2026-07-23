@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lab 2 · World Cup 2026 · ISW-521</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="worldcup26_styles.css">
+</head>
+<body>
+
+<header>
+  <div class="logo-mark" aria-hidden="true">
+    <svg viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="13" cy="13" r="11" stroke="#0A0A0A" stroke-width="2"/>
+      <path d="M7 13l4 4 8-8" stroke="#0A0A0A" stroke-width="2.2"
+            stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+  <div class="header-titles">
+    <h1>World Cup 2026 · Laboratorio 2</h1>
+    <p>Categoría B · Interfaces interactivas y DOM avanzado · ISW-521</p>
+  </div>
+  <span class="header-badge">API worldcup26.ir</span>
+</header>
+
+<main>
+  <div class="section-eyebrow visible">
+    <span class="eyebrow-label">Cinco pantallas · Cinco retos de resiliencia</span>
+    <div class="eyebrow-line"></div>
+    <span class="eyebrow-count">5</span>
+  </div>
+
+  <div class="cards-grid">
+
+    <a class="match-card" href="worldcup26_tour_sedes.html" style="text-decoration:none">
+      <div class="card-stripe"></div>
+      <div class="card-header">
+        <div class="card-matchup">
+          <p class="card-round">Pantalla 1</p>
+          <p class="card-teams">Tour Virtual <span class="team-highlight">de Sedes</span></p>
+        </div>
+      </div>
+    </a>
+
+    <a class="match-card" href="worldcup26_agenda.html" style="text-decoration:none">
+      <div class="card-stripe"></div>
+      <div class="card-header">
+        <div class="card-matchup">
+          <p class="card-round">Pantalla 2</p>
+          <p class="card-teams">Agenda <span class="team-highlight">Simultánea</span></p>
+        </div>
+      </div>
+    </a>
+
+    <a class="match-card" href="worldcup26_timeline.html" style="text-decoration:none">
+      <div class="card-stripe"></div>
+      <div class="card-header">
+        <div class="card-matchup">
+          <p class="card-round">Pantalla 3</p>
+          <p class="card-teams">Timeline <span class="team-highlight">Infinito</span></p>
+        </div>
+      </div>
+    </a>
+
+    <a class="match-card" href="worldcup26_dashboard.html" style="text-decoration:none">
+      <div class="card-stripe"></div>
+      <div class="card-header">
+        <div class="card-matchup">
+          <p class="card-round">Pantalla 4</p>
+          <p class="card-teams">Dashboard <span class="team-highlight">del Fanático</span></p>
+        </div>
+      </div>
+    </a>
+
+    <a class="match-card" href="worldcup26_matriz.html" style="text-decoration:none">
+      <div class="card-stripe"></div>
+      <div class="card-header">
+        <div class="card-matchup">
+          <p class="card-round">Pantalla 5</p>
+          <p class="card-teams">Matriz de <span class="team-highlight">Enfrentamientos</span></p>
+        </div>
+      </div>
+    </a>
+
+  </div>
+</main>
+
+<footer>
+  <span>
+    Datos: <code>worldcup26.ir</code> ·
+    Endpoints: <code>/get/teams</code> <code>/get/games</code> <code>/get/stadiums</code> <code>/get/groups</code>
+  </span>
+  <span>ISW-521 · Laboratorio 2 · Brandon Prado</span>
+</footer>
+
+</body>
+</html>
