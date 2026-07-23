@@ -1,18 +1,17 @@
-# 🏆 Laboratorio 2 · World Cup 2026 — Interfaces Interactivas y DOM Avanzado
+ Laboratorio 2 · World Cup 2026 — Interfaces Interactivas y DOM Avanzado
 
 > **ISW-521: Programación en Ambiente Web I** · Universidad Técnica Nacional, Sede San Carlos
 > Laboratorio 02 - Categoria B
 > **Estudiante:** Brandon Prado Mora
 
 ---
-
-## 📋 Descripción
+Descripción
 
 Aplicación web de **cinco pantallas independientes**, cada una implementando un subproyecto del catálogo de la Categoría B sobre la API pública [`worldcup26.ir`](https://worldcup26.ir). El foco del laboratorio no es el "camino feliz": cada pantalla implementa la **Arquitectura Base de Resiliencia** (backoff exponencial, countdown de 429, modo offline con `localStorage`) más su **reto de resiliencia específico**.
 
 > Conforme a las indicaciones del profesor para este laboratorio, se omiten la autenticación JWT y la exigencia de `async/await`; las llamadas usan `fetch` con cadenas de promesas (`.then()/.catch()`), manteniendo la estructura del machote del curso.
 
-## 🖥️ Las cinco pantallas
+## Las cinco pantallas
 
 | # | Pantalla | Técnica DOM | Endpoints | Reto de resiliencia |
 |---|----------|-------------|-----------|---------------------|
@@ -22,7 +21,7 @@ Aplicación web de **cinco pantallas independientes**, cada una implementando un
 | 4 | **Dashboard del Fanático** (`worldcup26_dashboard.html`) | Tematización con variables CSS (`--acento`) + `localStorage` | `/get/teams`, `/get/games`, `/get/groups` | El favorito sobrevive al refresco; ante fallo se muestra el último estado cacheado |
 | 5 | **Matriz de Enfrentamientos** (`worldcup26_matriz.html`) | Cuadrícula 4×4 por grupo, cruce de 3 recursos | `/get/groups`, `/get/teams`, `/get/games` | Si `/get/games` falla, matrices completas en "Pendiente"; al recuperar solo se actualizan celdas |
 
-## 🛡️ Arquitectura de resiliencia
+## Arquitectura de resiliencia
 
 Toda la lógica de red vive en **`worldcup26_api.js`**, separada de la presentación:
 
@@ -34,18 +33,18 @@ Toda la lógica de red vive en **`worldcup26_api.js`**, separada de la presentac
 
 ### Cumplimiento de prohibiciones absolutas
 
-- ❌ Cero `alert()` — los errores se comunican con banners y estados en el DOM.
-- ❌ Cero `window.location.reload()` — la recuperación es siempre por reintento en memoria.
-- ✅ Estilo asíncrono consistente en todo el proyecto (cadenas de promesas, según la excepción indicada por el profesor).
+-  Cero `alert()` — los errores se comunican con banners y estados en el DOM.
+-  Cero `window.location.reload()` — la recuperación es siempre por reintento en memoria.
+-  Estilo asíncrono consistente en todo el proyecto (cadenas de promesas, según la excepción indicada por el profesor).
 
-## 📡 Notas sobre la API
+##  Notas sobre la API
 
 - Todos los valores llegan como **string** (`"id": "37"`, `"pts": "0"`, `"finished": "FALSE"`), por lo que las comparaciones se hacen con `String()` y las operaciones numéricas con `Number()`.
 - `local_date` viene en formato `MM/DD/YYYY HH:mm` y se parsea manualmente (`parsearFechaLocal`) para no depender del locale del navegador.
 - Los partidos de eliminatoria sin equipos definidos traen `home_team_id: "0"` y un `home_team_label` descriptivo ("Winner Group A"), que se usa como respaldo.
 - El rate limit público es de **120 peticiones/minuto por IP**; excederlo produce un `429` real, útil para la demostración de la defensa.
 
-## 🚀 Ejecución
+##  Ejecución
 
 1. Clonar el repositorio:
    ```bash
